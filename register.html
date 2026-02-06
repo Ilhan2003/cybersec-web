@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+  <div class="form">
+    <div class="brand"><span class="dot"></span> CyberSec Report</div>
+    <p class="notice">Create staff account.</p>
+
+    <div class="field">
+      <label>Full Name</label>
+      <input id="name" placeholder="Your name"/>
+    </div>
+    <div class="field">
+      <label>Department</label>
+      <select id="dept">
+        <option value="Offense">Offense</option>
+        <option value="Defense">Defense</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="name@company.com"/>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input id="password" type="password" placeholder="••••••••"/>
+    </div>
+
+    <div id="msg" class="error" style="display:none"></div>
+    <div id="ok" class="success" style="display:none"></div>
+
+    <div class="row">
+      <button id="btnRegister" class="btn">Create Account</button>
+      <a class="btn secondary" href="login.html" style="text-align:center; line-height:40px;">Back</a>
+    </div>
+  </div>
+
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>

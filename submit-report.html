@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Submit Report</title>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+  <div class="form">
+    <div class="row">
+      <div class="brand"><span class="dot"></span> <span id="pageTitle">Submit Report</span></div>
+      <a class="btn secondary" href="dashboard.html">Back</a>
+    </div>
+
+    <div class="field">
+      <label>Report Title</label>
+      <input id="title" placeholder="e.g. Phishing incident report"/>
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea id="description"></textarea>
+    </div>
+    <div class="field">
+      <label>Findings</label>
+      <textarea id="findings"></textarea>
+    </div>
+    <div class="field">
+      <label>TTPs</label>
+      <textarea id="ttp"></textarea>
+    </div>
+    <div class="field">
+      <label>Target Scope</label>
+      <input id="scope" placeholder="e.g. Finance Dept endpoints"/>
+    </div>
+    <div class="field">
+      <label>Severity</label>
+      <select id="severity">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Attach PDF (optional)</label>
+      <input id="pdf" type="file" accept="application/pdf"/>
+      <div class="notice">If uploaded, it will be linked to the report.</div>
+    </div>
+
+    <button id="btnViewPdf" class="btn secondary" style="width:100%; display:none; margin-bottom:10px;">
+      View uploaded PDF
+    </button>
+    
+    <div id="msg" class="error" style="display:none"></div>
+    <div id="ok" class="success" style="display:none"></div>
+
+    <button id="btnSubmit" class="btn" style="width:100%">Submit</button>
+  </div>
+
+  <script type="module" src="js/submit-report.js"></script>
+</body>
+</html>

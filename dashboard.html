@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="css/theme.css"/>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="dot"></span> Dashboard</div>
+      <nav class="nav">
+        <a class="active" href="dashboard.html">Home</a>
+        <a href="submit-report.html">Submit Report</a>
+      </nav>
+      <div style="margin-top:18px" class="notice" id="who"></div>
+      <button class="btn secondary" id="btnLogout" style="margin-top:12px; width:100%;">Logout</button>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="search">
+          <span style="opacity:.7">🔎</span>
+          <input id="search" placeholder="Search my reports..."/>
+        </div>
+        <div class="pills">
+          <span class="pill" id="pillDept">Dept: -</span>
+          <span class="pill" id="pillRole">Role: staff</span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 3;">
+          <h3>Total</h3>
+          <div class="big" id="statTotal">0</div>
+        </div>
+        <div class="card" style="grid-column: span 3;">
+          <h3>Submitted</h3>
+          <div class="big" id="statSubmitted">0</div>
+        </div>
+        <div class="card" style="grid-column: span 3;">
+          <h3>Approved</h3>
+          <div class="big" id="statApproved">0</div>
+        </div>
+        <div class="card" style="grid-column: span 3;">
+          <h3>Rejected</h3>
+          <div class="big" id="statRejected">0</div>
+        </div>
+
+        <div class="card" style="grid-column: span 12;">
+          <div class="row" style="margin-bottom:10px">
+            <h3 style="margin:0">My Reports</h3>
+            <a class="btn" href="submit-report.html">+ Submit New Report</a>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Severity</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+
+          <div class="notice" id="empty" style="display:none; padding:8px 0;">
+            No reports found.
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
