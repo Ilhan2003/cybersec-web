@@ -38,7 +38,7 @@ $("btnSave").onclick = async () => {
 
     if (error) throw error;
 
-    window.location.href = "/dashboard.html";
+    window.location.href = "dashboard.html";
   } catch (e) {
     $("msg").textContent = e.message || String(e);
     $("msg").style.display = "block";
