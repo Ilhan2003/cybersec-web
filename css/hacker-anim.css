@@ -1,0 +1,145 @@
+:root{
+  --bg:#05070b;
+  --panel:rgba(7,16,34,.55);
+  --line:rgba(49,255,106,.18);
+  --fg:rgba(200,247,210,.92);
+  --muted:rgba(200,247,210,.62);
+  --accent:#31ff6a;
+  --warn:#f7d66a;
+}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 50% 20%, #071022 0%, var(--bg) 55%, #000 100%);
+  color:var(--fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  overflow-x:hidden;
+}
+
+/* Scanlines + vignette */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    rgba(0,0,0,0) 3px,
+    rgba(0,0,0,0) 6px
+  );
+  mix-blend-mode: overlay;
+  pointer-events:none;
+  opacity:.22;
+  z-index:0;
+}
+body::after{
+  content:"";
+  position:fixed; inset:-40px;
+  background: radial-gradient(circle at 50% 35%, rgba(0,0,0,0) 0%, rgba(0,0,0,.78) 72%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Floating “matrix” particles */
+.hx-bg{
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.18;
+  filter: blur(.0px);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(49,255,106,.6) 0 1px, transparent 2px),
+    radial-gradient(circle at 60% 35%, rgba(49,255,106,.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(49,255,106,.50) 0 1px, transparent 2px),
+    radial-gradient(circle at 35% 80%, rgba(49,255,106,.45) 0 1px, transparent 2px);
+  animation: hx-drift 6s linear infinite;
+}
+@keyframes hx-drift{ 0%{transform:translateY(0)} 100%{transform:translateY(14px)} }
+
+/* Fade-in for page */
+.hx-enter{
+  position:relative;
+  z-index:1;
+  animation: hx-in 420ms ease-out both;
+}
+@keyframes hx-in{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* Neon border/glow for panels */
+.hx-panel{
+  border:1px solid var(--line);
+  background: var(--panel);
+  box-shadow:
+    0 0 0 1px rgba(49,255,106,.06) inset,
+    0 18px 70px rgba(0,0,0,.72),
+    0 0 42px rgba(49,255,106,.10);
+  border-radius:16px;
+  backdrop-filter: blur(6px);
+}
+
+/* Button hover “glitch” */
+.hx-btn{
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  border:1px solid rgba(49,255,106,.22);
+  box-shadow: 0 0 0 1px rgba(49,255,106,.05) inset;
+}
+.hx-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(49,255,106,.45);
+  box-shadow: 0 0 22px rgba(49,255,106,.18);
+}
+.hx-btn:active{ transform: translateY(0) scale(.99); }
+
+/* Text “glitch” effect (use class hx-glitch on headings) */
+.hx-glitch{
+  position:relative;
+  text-shadow: 0 0 10px rgba(49,255,106,.16);
+}
+.hx-glitch::before,
+.hx-glitch::after{
+  content:attr(data-text);
+  position:absolute; left:0; top:0; width:100%;
+  opacity:.45;
+  clip-path: inset(0 0 0 0);
+  pointer-events:none;
+}
+.hx-glitch::before{
+  transform: translate(1px, -1px);
+  color: rgba(49,255,106,.85);
+  animation: hx-gl1 2.8s infinite steps(1,end);
+}
+.hx-glitch::after{
+  transform: translate(-1px, 1px);
+  color: rgba(255,80,120,.55);
+  animation: hx-gl2 3.2s infinite steps(1,end);
+}
+@keyframes hx-gl1{
+  0%,100%{clip-path: inset(0 0 90% 0)}
+  12%{clip-path: inset(18% 0 60% 0)}
+  26%{clip-path: inset(55% 0 30% 0)}
+  44%{clip-path: inset(10% 0 78% 0)}
+  61%{clip-path: inset(70% 0 12% 0)}
+  78%{clip-path: inset(35% 0 45% 0)}
+}
+@keyframes hx-gl2{
+  0%,100%{clip-path: inset(85% 0 0 0)}
+  16%{clip-path: inset(60% 0 18% 0)}
+  34%{clip-path: inset(25% 0 55% 0)}
+  52%{clip-path: inset(78% 0 10% 0)}
+  69%{clip-path: inset(42% 0 35% 0)}
+  86%{clip-path: inset(12% 0 70% 0)}
+}
+
+/* Typewriter (optional): add hx-type to a small line */
+.hx-type{
+  overflow:hidden;
+  white-space:nowrap;
+  border-right: 8px solid rgba(49,255,106,.65);
+  animation: hx-type 1.2s steps(28,end) both, hx-caret 900ms steps(1,end) infinite;
+}
+@keyframes hx-type{ from{width:0} to{width:100%} }
+@keyframes hx-caret{ 50%{border-right-color: transparent} }

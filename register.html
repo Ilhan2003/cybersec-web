@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Register</title>
+  <h1 class="hx-glitch" data-text="Register">Register</h1>
   <link rel="stylesheet" href="css/theme.css"/>
+  <link rel="stylesheet" href="css/hacker-anim.css">
 </head>
 <body>
-  <div class="form">
+<div class="hx-enter">
+  <div class="form hx-panel">
     <div class="brand"><span class="dot"></span> CyberSec Report</div>
     <p class="notice">Create staff account.</p>
 
@@ -35,11 +37,12 @@
     <div id="ok" class="success" style="display:none"></div>
 
     <div class="row">
-      <button id="btnRegister" class="btn">Create Account</button>
-      <a class="btn secondary" href="login.html" style="text-align:center; line-height:40px;">Back</a>
+      <button id="btnRegister" class="btn hx-btn">Create Account</button>
+      <a class="btn secondary hx-btn" href="login.html" style="text-align:center; line-height:40px;">Back</a>
     </div>
   </div>
-
+</div>
   <script type="module" src="js/register.js"></script>
+  <script src="js/hacker-anim.js"></script>
 </body>
 </html>

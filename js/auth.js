@@ -36,17 +36,16 @@ export async function signInGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo:
-        window.location.origin +
-        window.location.pathname.replace(/\/[^/]*$/, "/") +
-        "dashboard.html",
-      queryParams: { prompt: "select_account" }
+      redirectTo: window.location.origin + "dashboard.html",
+      queryParams: {
+        prompt: "login",   // forces login screen more often
+        max_age: "0"       // asks for re-auth if supported
+      }
     }
   });
   if (error) throw error;
   return data;
 }
-
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut();

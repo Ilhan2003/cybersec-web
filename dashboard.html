@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Staff Dashboard</title>
+  <h1 class="hx-glitch" data-text="Staff Dashboard">Staff Dashboard</h1>
   <link rel="stylesheet" href="css/theme.css"/>
+  <link rel="stylesheet" href="css/hacker-anim.css">
 </head>
 <body>
-  <div class="shell">
+<div class="hx-enter">
+  <div class="shell hx-panel">
     <aside class="sidebar">
       <div class="brand"><span class="dot"></span> Dashboard</div>
       <nav class="nav">
@@ -15,7 +17,7 @@
         <a href="submit-report.html">Submit Report</a>
       </nav>
       <div style="margin-top:18px" class="notice" id="who"></div>
-      <button class="btn secondary" id="btnLogout" style="margin-top:12px; width:100%;">Logout</button>
+      <button class="btn secondary hx-btn" id="btnLogout" style="margin-top:12px; width:100%;">Logout</button>
     </aside>
 
     <main class="main">
@@ -51,7 +53,7 @@
         <div class="card" style="grid-column: span 12;">
           <div class="row" style="margin-bottom:10px">
             <h3 style="margin:0">My Reports</h3>
-            <a class="btn" href="submit-report.html">+ Submit New Report</a>
+            <a class="btn hx-btn" href="submit-report.html">+ Submit New Report</a>
           </div>
 
           <table class="table">
@@ -74,7 +76,8 @@
       </div>
     </main>
   </div>
-
+</div>
   <script type="module" src="js/dashboard.js"></script>
+  <script src="js/hacker-anim.js"></script>
 </body>
 </html>
