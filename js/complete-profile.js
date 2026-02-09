@@ -8,6 +8,12 @@ async function preload() {
   await requireAuth();
   const profile = await getMyProfile();
 
+  // ✅ If department already set, skip this page
+  if (profile && profile.department_id) {
+    window.location.href = "dashboard.html";
+    return;
+  }
+
   // prefill if exists
   if (profile?.name) $("name").value = profile.name;
   if (profile?.department_id) $("dept").value = profile.department_id;
@@ -15,10 +21,13 @@ async function preload() {
 
 $("btnSave").onclick = async () => {
   $("msg").style.display = "none";
+
   try {
     await requireAuth();
 
-    const { data: u } = await supabase.auth.getUser();
+    const { data: u, error: uErr } = await supabase.auth.getUser();
+    if (uErr) throw uErr;
+
     const uid = u.user.id;
     const email = u.user.email;
 
