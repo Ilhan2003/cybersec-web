@@ -35,7 +35,6 @@ function badgeForStatus(status) {
   }
 }
 
-// ✅ Delete report + its attachment rows + PDFs in Storage
 async function deleteReport(reportId) {
   if (!confirm("Delete this report and its attachments? This cannot be undone.")) return;
 
