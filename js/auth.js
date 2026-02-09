@@ -36,7 +36,7 @@ export async function signInGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: window.location.origin + "dashboard.html",
+      redirectTo: window.location.origin + "complete-profile.html",
       queryParams: {
         prompt: "login",   // forces login screen more often
         max_age: "0"       // asks for re-auth if supported
