@@ -36,7 +36,7 @@ export async function signInGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://ilhan2003.github.io/cybersec-web/dashboard.html"
+      redirectTo: "https://ilhan2003.github.io/cybersec-web/complete-profile.html"
     }
   });
   if (error) throw error;
