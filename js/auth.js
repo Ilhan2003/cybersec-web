@@ -36,12 +36,18 @@ export async function signInGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://ilhan2003.github.io/cybersec-web/complete-profile.html"
-    }
+      redirectTo: "https://ilhan2003.github.io/cybersec-web/complete-profile.html",
+      queryParams: {
+        prompt: "select_account",         // ✅ forces Google account chooser
+        // prompt: "consent select_account" // ✅ (optional) forces consent + chooser
+      },
+    },
   });
+
   if (error) throw error;
   return data;
 }
+
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut();
